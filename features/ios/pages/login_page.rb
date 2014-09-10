@@ -6,6 +6,9 @@ class LoginPage < Calabash::IBase
     "button marked:'Sign In'"
   end
 
+  def help_button
+    "UIButton marked:'Help'"
+  end
 
   def self_hosted_site
     touch("* marked:'Add Self-Hosted Site'")
@@ -20,6 +23,10 @@ class LoginPage < Calabash::IBase
     touch(add_site)
 
     wait_for_login_done
+  end
+
+  def open_help
+    touch(help_button)
   end
 
   def enter_text(query_string, text)

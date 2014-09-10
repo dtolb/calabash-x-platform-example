@@ -12,7 +12,7 @@ When(/^I enter invalid credentials$/) do
                                       CREDENTIALS[:site])
 end
 
-Then(/^I am presented with an error message to correct credentials$/) do
+Then(/^I am prompted to correct credentials$/) do
   #TODO
 end
 

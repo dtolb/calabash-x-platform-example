@@ -11,6 +11,14 @@ class LoginPage < Calabash::ABase
     tap_when_element_exists(add_self_hosted_site_button)
   end
 
+  def help_button
+    "android.widget.ImageView marked:'Help'"
+  end
+
+  def open_help
+    touch(help_button)
+  end
+
   def login(user,pass,site)
     enter_text(user_field, user)
     enter_text(pass_field, pass)

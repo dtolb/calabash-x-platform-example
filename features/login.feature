@@ -4,7 +4,7 @@ Feature: Login
   Scenario: Add site - Invalid login
     Given I am about to login
     When I enter invalid credentials
-    Then I am presented with an error message to correct credentials
+    Then I am prompted to correct credentials
 
   @valid
   Scenario: Add site
