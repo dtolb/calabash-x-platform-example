@@ -9,4 +9,4 @@ end
 
 Then(/^I see the button to open the logs$/) do
   page(HelpPage).has_log_button
-endb
+end

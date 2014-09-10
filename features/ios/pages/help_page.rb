@@ -13,7 +13,7 @@ class HelpPage < Calabash::IBase
   def activity_logs_button
     "UILabel marked:'Activity Logs'"
   end
-  
+
   def has_log_button
     wait_for_elements_exist([activity_logs_button])
   end
@@ -23,5 +23,4 @@ class HelpPage < Calabash::IBase
       wait_for_elements_exist([help_center])
     end
   end
-
 end
