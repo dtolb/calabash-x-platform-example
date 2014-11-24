@@ -11,7 +11,7 @@ class LoginPage < Calabash::IBase
   end
 
   def self_hosted_site
-    touch("* marked:'Add Self-Hosted Site'")
+    tap_mark('Add Self-Hosted Site')
     wait_for_none_animating
   end
 
@@ -27,6 +27,15 @@ class LoginPage < Calabash::IBase
 
   def open_help
     touch(help_button)
+  end
+
+  def more_information
+    tap_mark 'Help'
+    page(InfoPage).await()
+  end
+
+  def assert_can_create_account
+    check_element_exists "* marked:'Create Account'"
   end
 
   def enter_text(query_string, text)
@@ -58,9 +67,6 @@ class LoginPage < Calabash::IBase
   def wait_for_login_done
     result = nil
     site_page = page(SitePage)
-
-
-
     wait_for(timeout: 60) do
       if element_exists("label text:'Need Help?'")
         result = :invalid
@@ -68,8 +74,6 @@ class LoginPage < Calabash::IBase
         result = :valid
       end
     end
-
-
     case result
       when :invalid
         self

@@ -7,8 +7,11 @@ class LoginPage < Calabash::ABase
   end
 
   def self_hosted_site
+
     hide_soft_keyboard
-    tap_when_element_exists(add_self_hosted_site_button)
+
+    tap_mark(add_self_hosted_site_button)
+
   end
 
   def help_button
@@ -29,6 +32,15 @@ class LoginPage < Calabash::ABase
     touch(sign_in)
 
     wait_for_login_done
+  end
+
+  def assert_can_create_account
+    check_element_exists "* id:'nux_create_account_button'"
+  end
+
+  def more_information
+    tap_mark "info_button"
+    page(InfoPage).await
   end
 
   def sign_in
@@ -52,14 +64,14 @@ class LoginPage < Calabash::ABase
   end
 
   def add_self_hosted_site_button
-    "android.widget.TextView text:'Add self-hosted site'"
+    'Add self-hosted site'
   end
 
 
   def wait_for_login_done
     result = nil
     wait_for(timeout: 120) do
-      if element_exists("android.widget.TextView {text BEGINSWITH 'The username or'}")
+      if element_exists("* {text BEGINSWITH 'The username or'}")
         result = :invalid
       elsif element_exists("* marked:'Posts'")
         result = :valid
